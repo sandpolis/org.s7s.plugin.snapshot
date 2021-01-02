@@ -9,8 +9,8 @@
 //============================================================================//
 
 plugins {
-	id("eclipse")
 	id("java-library")
+	id("sandpolis-java")
 	id("sandpolis-soi")
 }
 
