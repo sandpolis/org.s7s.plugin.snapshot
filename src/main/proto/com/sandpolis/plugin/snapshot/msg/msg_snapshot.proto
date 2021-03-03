@@ -30,3 +30,7 @@ message RQ_SnapshotBuild {
 message RQ_SnapshotApply {
     SnapshotType type = 1;
 }
+
+message EV_SnapshotData {
+	bytes data = 1;
+}
