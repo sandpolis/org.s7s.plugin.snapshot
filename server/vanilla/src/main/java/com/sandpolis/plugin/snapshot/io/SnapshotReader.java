@@ -7,7 +7,7 @@
 //  as published by the Mozilla Foundation.                                   //
 //                                                                            //
 //============================================================================//
-package com.sandpolis.plugin.snapshot;
+package com.sandpolis.plugin.snapshot.io;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -16,21 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SnapshotReader {
-
-	private static final int HDR_METADATA_SIZE = 28;
-
-	private static final int HASH_BLOCK_SIZE = 25;
-
-	private final long dataSize;
-
-	private final int blockCount;
-
-	private final short blockSize;
-
-	private final short reductionFactor;
-
-	private int rootReductionFactor;
+public class SnapshotReader extends SnapshotStream {
 
 	private final List<RandomAccessFile> layers;
 
@@ -42,10 +28,16 @@ public class SnapshotReader {
 		this.layers.add(root);
 
 		// Read metadata
+		root.seek(0);
+		var version = root.readByte();
+		if (version != VERSION) {
+			// TODO
+		}
 		dataSize = root.readLong();
-		blockCount = root.readInt();
 		blockSize = root.readShort();
 		reductionFactor = root.readShort();
+		blockCount = computeBlockCount(dataSize, blockSize);
+		rootReductionFactor = computeRootReductionFactor(blockCount, reductionFactor);
 
 		byte[] parent = new byte[8];
 		root.read(parent);
@@ -53,12 +45,6 @@ public class SnapshotReader {
 			root = new RandomAccessFile(file.resolveSibling(new String(parent)).toFile(), "r");
 			root.read(parent);
 			layers.add(root);
-		}
-
-		// Compute root reduction factor
-		rootReductionFactor = blockCount;
-		while (rootReductionFactor >= reductionFactor) {
-			rootReductionFactor /= reductionFactor;
 		}
 	}
 
@@ -73,32 +59,21 @@ public class SnapshotReader {
 	}
 
 	public byte[] readData(int hashLevel, int hashIndex) throws IOException {
-		byte[] block = new byte[blockSize];
 		synchronized (layers) {
 			var root = layers.get(0);
-			root.seek(computeHashOffset(hashLevel, hashIndex));
+			root.seek(computeHashOffset(hashLevel, hashIndex) + 16);
 
 			long offset = root.readLong();
+			short length = root.readShort();
 			int layer = root.readUnsignedByte();
+
+			byte[] block = new byte[length];
 
 			var target = layers.get(layer);
 			target.seek(offset);
 			target.read(block);
+			return block;
 		}
-		return block;
 	}
 
-	/**
-	 * Index into the hash tree. This implementation uses the formula for the closed
-	 * form solution of a geometric series.
-	 * 
-	 * @param level The 0-based level
-	 * @param index The 0-based index within the given level
-	 * @return The file offset of the hash structure defined by the given level and
-	 *         index
-	 */
-	private long computeHashOffset(int level, int index) {
-		return (long) (HASH_BLOCK_SIZE * rootReductionFactor
-				* ((1 - Math.pow(reductionFactor, level)) / (1 - reductionFactor) + index));
-	}
 }
