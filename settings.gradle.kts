@@ -8,23 +8,4 @@
 //                                                                            //
 //============================================================================//
 
-plugins {
-	id("java-library")
-	id("sandpolis-java")
-	id("sandpolis-module")
-	id("sandpolis-soi")
-}
-
-dependencies {
-	testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.1")
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.1")
-
-	compileOnly(project(":plugin:com.sandpolis.plugin.snapshot"))
-}
-
-eclipse {
-	project {
-		name = "com.sandpolis.plugin.snapshot:agent:vanilla"
-		comment = "com.sandpolis.plugin.snapshot:agent:vanilla"
-	}
-}
+rootProject.name = "com.sandpolis.plugin.snapshot"
