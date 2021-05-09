@@ -12,7 +12,7 @@ package com.sandpolis.plugin.snapshot.io;
 public abstract class SnapshotStream {
 
 	protected static final byte VERSION = 0x01;
-	
+
 	protected static final int HDR_METADATA_SIZE = 28;
 
 	protected static final int HASH_BLOCK_SIZE = 25;
@@ -43,7 +43,7 @@ public abstract class SnapshotStream {
 	/**
 	 * Index into the hash tree. This implementation uses the formula for the closed
 	 * form solution of a geometric series.
-	 * 
+	 *
 	 * @param level The 0-based level
 	 * @param index The 0-based index within the given level
 	 * @return The file offset of the hash structure defined by the given level and
