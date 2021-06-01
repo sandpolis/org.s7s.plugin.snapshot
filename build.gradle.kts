@@ -19,7 +19,7 @@ plugins {
 }
 
 dependencies {
-	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.1")
+	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 
 	api(project(":module:com.sandpolis.core.instance"))
 	api(project(":module:com.sandpolis.core.net"))
