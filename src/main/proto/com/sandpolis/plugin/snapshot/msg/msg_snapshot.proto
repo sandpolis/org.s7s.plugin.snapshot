@@ -31,6 +31,12 @@ message RQ_SnapshotApply {
     SnapshotType type = 1;
 }
 
-message EV_SnapshotData {
-	bytes data = 1;
+message EV_SnapshotBlock {
+	int64 offset = 1;
+	bytes data = 2;
+}
+
+message EV_SnapshotHashList {
+	int64 offset = 1;
+	repeated bytes hash = 2;
 }

@@ -7,8 +7,10 @@
 //  as published by the Mozilla Foundation.                                   //
 //                                                                            //
 //============================================================================//
-package com.sandpolis.plugin.snapshot;
+package com.sandpolis.plugin.snapshot.server.vanilla;
 
-public class SnapshotExe {
+import com.google.common.hash.BloomFilter;
+
+public class SnapshotStore {
 
 }

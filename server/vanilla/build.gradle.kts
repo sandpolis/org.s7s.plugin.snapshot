@@ -19,6 +19,8 @@ dependencies {
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.1")
 
 	compileOnly(project(":plugin:com.sandpolis.plugin.snapshot"))
+
+	//implementation("com.github.cilki:qcow4j:0.1.0")
 }
 
 eclipse {
