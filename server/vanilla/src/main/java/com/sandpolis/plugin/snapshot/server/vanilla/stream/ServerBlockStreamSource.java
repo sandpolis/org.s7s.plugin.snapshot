@@ -1,5 +1,6 @@
 package com.sandpolis.plugin.snapshot.server.vanilla.stream;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
@@ -9,6 +10,7 @@ import com.google.common.hash.Hashing;
 import com.google.protobuf.ByteString;
 import com.sandpolis.core.net.stream.StreamSource;
 import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotBlock;
+import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotHashList;
 
 public class ServerBlockStreamSource extends StreamSource<EV_SnapshotBlock> {
 
@@ -23,11 +25,22 @@ public class ServerBlockStreamSource extends StreamSource<EV_SnapshotBlock> {
 			var buffer = ByteBuffer.allocateDirect(65536);
 
 			while (!Thread.interrupted()) {
-				var ev = hashStream.queue.take();
+				EV_SnapshotHashList ev = null;
+				try {
+					ev = hashStream.queue.take();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				var offset = ev.getOffset();
 
 				for (ByteString hash : ev.getHashList()) {
-					container.read(buffer, offset);
+					try {
+						container.read(buffer, offset);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
 					// Hash the block and submit if different
 					if (!Arrays.equals(Hashing.sha512().hashBytes(buffer).asBytes(), hash.toByteArray())) {

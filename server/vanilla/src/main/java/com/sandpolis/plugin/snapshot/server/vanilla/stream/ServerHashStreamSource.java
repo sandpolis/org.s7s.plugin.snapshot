@@ -8,4 +8,16 @@ public class ServerHashStreamSource extends StreamSource<EV_SnapshotHashList> {
 
 	private Qcow2 container;
 
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void stop() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

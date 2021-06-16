@@ -7,32 +7,9 @@
 //  as published by the Mozilla Foundation.                                   //
 //                                                                            //
 //============================================================================//
+module com.sandpolis.plugin.snapshot {
+	exports com.sandpolis.plugin.snapshot.msg;
 
-plugins {
-	id("java-library")
-	id("sandpolis-java")
-	id("sandpolis-module")
-	id("sandpolis-protobuf")
-	id("sandpolis-soi")
-	id("sandpolis-plugin")
-	id("sandpolis-publish")
-}
-
-dependencies {
-	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.2")
-
-	if (project.getParent() == null) {
-		api("com.sandpolis:core.instance:0.2.0")
-		api("com.sandpolis:core.net:0.2.0")
-	} else {
-		api(project(":module:com.sandpolis.core.instance"))
-		api(project(":module:com.sandpolis.core.net"))
-	}
-}
-
-sandpolis_plugin {
-	id = project.name
-	coordinate = "com.sandpolis:sandpolis-plugin-snapshot"
-	name = "Snapshot Plugin"
-	description = "Snapshot Plugin"
+	requires com.google.protobuf;
+	requires com.sandpolis.core.instance;
 }
