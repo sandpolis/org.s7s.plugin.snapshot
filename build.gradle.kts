@@ -19,10 +19,15 @@ plugins {
 }
 
 dependencies {
-	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.1")
+	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 
-	api(project(":module:com.sandpolis.core.instance"))
-	api(project(":module:com.sandpolis.core.net"))
+	if (project.getParent() == null) {
+		api("com.sandpolis:core.instance:0.2.0")
+		api("com.sandpolis:core.net:0.2.0")
+	} else {
+		api(project(":module:com.sandpolis.core.instance"))
+		api(project(":module:com.sandpolis.core.net"))
+	}
 }
 
 sandpolis_plugin {

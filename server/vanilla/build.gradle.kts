@@ -15,12 +15,12 @@ plugins {
 }
 
 dependencies {
-	testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.1")
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.1")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 
-	compileOnly(project(":plugin:com.sandpolis.plugin.snapshot"))
+	implementation("com.github.cilki:qcow4j:0.0.1")
 
-	//implementation("com.github.cilki:qcow4j:0.1.0")
+	compileOnly(project.getParent()?.getParent()!!)
 }
 
 eclipse {
