@@ -12,14 +12,14 @@ package com.sandpolis.plugin.snapshot.server.vanilla.stream;
 import java.util.concurrent.BlockingQueue;
 
 import com.sandpolis.core.net.stream.StreamSink;
-import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotHashList;
+import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotHashBlock;
 
-public class ServerHashStreamSink extends StreamSink<EV_SnapshotHashList> {
+public class ServerHashStreamSink extends StreamSink<EV_SnapshotHashBlock> {
 
-	BlockingQueue<EV_SnapshotHashList> queue;
+	BlockingQueue<EV_SnapshotHashBlock> queue;
 
 	@Override
-	public void onNext(EV_SnapshotHashList item) {
+	public void onNext(EV_SnapshotHashBlock item) {
 		queue.add(item);
 	}
 

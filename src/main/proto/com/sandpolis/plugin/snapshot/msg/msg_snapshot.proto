@@ -13,30 +13,80 @@ package plugin.snapshot.msg;
 
 option java_package = "com.sandpolis.plugin.snapshot.msg";
 
-enum SnapshotType {
-    BLOCK = 0;
-    FILE = 1;
+// Create a new snapshot on a target agent.
+//
+// Sources      : client
+// Destinations : server
+// Response     : Outcome
+//
+message RQ_CreateSnapshot {
+
+    // The target agent's UUID
+    string agent_uuid = 1;
+
+    // The target partition's UUID
+    string partition_uuid = 2;
 }
 
-message SnapshotMetadata {
-    SnapshotType type = 1;
+// Apply an existing snapshot on a target agent.
+//
+// Sources      : client
+// Destinations : server
+// Response     : Outcome
+//
+message RQ_ApplySnapshot {
 
+    // The target agent's UUID
+    string agent_uuid = 1;
+
+    // The target partition's UUID
+    string partition_uuid = 2;
+
+    // The snapshot's UUID
+    string snapshot_uuid = 3;
 }
 
-message RQ_SnapshotBuild {
-    SnapshotType type = 1;
+// Create a new snapshot stream.
+//
+// Sources      : server, agent
+// Destinations : server, agent
+// Response     : Outcome
+//
+message RQ_SnapshotStream {
+
+    // The stream's ID
+    int32 stream_id = 1;
+
+    // The snapshot operation type
+    string operation = 2;
+
+    // The target partition uuid
+    string partition_uuid = 3;
+
+    // The block size in bytes
+    int32 block_size = 4;
 }
 
-message RQ_SnapshotApply {
-    SnapshotType type = 1;
+// An event containing compressed snapshot data.
+//
+// Sources      : server, agent
+// Destinations : server, agent
+//
+message EV_SnapshotDataBlock {
+    int64 offset = 1;
+    bytes data = 2;
 }
 
-message EV_SnapshotBlock {
-	int64 offset = 1;
-	bytes data = 2;
-}
+// An event containing one or more contiguous block hashes.
+//
+// Sources      : server, agent
+// Destinations : server, agent
+//
+message EV_SnapshotHashBlock {
 
-message EV_SnapshotHashList {
-	int64 offset = 1;
-	repeated bytes hash = 2;
+    // The offset of the block that the first hash corresponds
+    int64 offset = 1;
+
+    // A list of consecutive block hashes
+    repeated bytes hash = 2;
 }

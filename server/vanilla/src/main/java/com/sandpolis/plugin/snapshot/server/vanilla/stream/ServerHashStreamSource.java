@@ -11,9 +11,9 @@ package com.sandpolis.plugin.snapshot.server.vanilla.stream;
 
 import com.github.cilki.qcow4j.Qcow2;
 import com.sandpolis.core.net.stream.StreamSource;
-import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotHashList;
+import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotHashBlock;
 
-public class ServerHashStreamSource extends StreamSource<EV_SnapshotHashList> {
+public class ServerHashStreamSource extends StreamSource<EV_SnapshotHashBlock> {
 
 	private Qcow2 container;
 

@@ -18,10 +18,10 @@ import com.github.cilki.qcow4j.Qcow2;
 import com.google.common.hash.Hashing;
 import com.google.protobuf.ByteString;
 import com.sandpolis.core.net.stream.StreamSource;
-import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotBlock;
-import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotHashList;
+import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotDataBlock;
+import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotHashBlock;
 
-public class ServerBlockStreamSource extends StreamSource<EV_SnapshotBlock> {
+public class ServerBlockStreamSource extends StreamSource<EV_SnapshotDataBlock> {
 
 	private ServerHashStreamSink hashStream;
 
@@ -34,7 +34,7 @@ public class ServerBlockStreamSource extends StreamSource<EV_SnapshotBlock> {
 			var buffer = ByteBuffer.allocateDirect(65536);
 
 			while (!Thread.interrupted()) {
-				EV_SnapshotHashList ev = null;
+				EV_SnapshotHashBlock ev = null;
 				try {
 					ev = hashStream.queue.take();
 				} catch (InterruptedException e) {
@@ -53,7 +53,7 @@ public class ServerBlockStreamSource extends StreamSource<EV_SnapshotBlock> {
 
 					// Hash the block and submit if different
 					if (!Arrays.equals(Hashing.sha512().hashBytes(buffer).asBytes(), hash.toByteArray())) {
-						submit(EV_SnapshotBlock.newBuilder().setOffset(offset).setData(ByteString.copyFrom(buffer))
+						submit(EV_SnapshotDataBlock.newBuilder().setOffset(offset).setData(ByteString.copyFrom(buffer))
 								.build());
 					}
 					offset += buffer.capacity();
