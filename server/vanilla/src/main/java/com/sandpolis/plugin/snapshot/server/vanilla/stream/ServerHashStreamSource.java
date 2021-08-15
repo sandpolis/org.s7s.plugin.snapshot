@@ -24,7 +24,7 @@ public class ServerHashStreamSource extends StreamSource<EV_SnapshotHashBlock> {
 	}
 
 	@Override
-	public void stop() {
+	public void close() {
 		// TODO Auto-generated method stub
 
 	}

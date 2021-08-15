@@ -73,7 +73,7 @@ public class ServerBlockStreamSource extends StreamSource<EV_SnapshotDataBlock> 
 	}
 
 	@Override
-	public void stop() {
+	public void close() {
 		executor.shutdown();
 	}
 }
