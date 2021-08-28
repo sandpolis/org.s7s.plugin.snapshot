@@ -24,7 +24,7 @@ dependencies {
 
 eclipse {
 	project {
-		name = "com.sandpolis.plugin.snapshot:agent:vanilla"
-		comment = "com.sandpolis.plugin.snapshot:agent:vanilla"
+		name = "com.sandpolis.plugin.snapshot:agent:kilo"
+		comment = "com.sandpolis.plugin.snapshot:agent:kilo"
 	}
 }

@@ -11,4 +11,4 @@
 rootProject.name = "com.sandpolis.plugin.snapshot"
 
 include("server:vanilla")
-include("agent:vanilla")
+include("agent:kilo")
