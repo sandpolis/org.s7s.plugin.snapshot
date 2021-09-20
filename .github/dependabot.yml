@@ -1,20 +1,20 @@
 version: 2
 updates:
-- package-ecosystem: gradle
-  directory: "/"
-  schedule:
-    interval: daily
-    timezone: America/Chicago
-  open-pull-requests-limit: 99
-- package-ecosystem: gradle
-  directory: "/agent/vanilla"
-  schedule:
-    interval: daily
-    timezone: America/Chicago
-  open-pull-requests-limit: 99
-- package-ecosystem: gradle
-  directory: "/server/vanilla"
-  schedule:
-    interval: daily
-    timezone: America/Chicago
-  open-pull-requests-limit: 99
+  - package-ecosystem: gradle
+    directory: "/"
+    schedule:
+      interval: daily
+      timezone: America/Chicago
+    open-pull-requests-limit: 99
+  - package-ecosystem: gradle
+    directory: "/agent/vanilla"
+    schedule:
+      interval: daily
+      timezone: America/Chicago
+    open-pull-requests-limit: 99
+  - package-ecosystem: gradle
+    directory: "/server/vanilla"
+    schedule:
+      interval: daily
+      timezone: America/Chicago
+    open-pull-requests-limit: 99
