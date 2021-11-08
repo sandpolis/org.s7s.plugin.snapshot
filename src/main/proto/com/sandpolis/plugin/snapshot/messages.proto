@@ -9,9 +9,9 @@
 //============================================================================//
 syntax = "proto3";
 
-package plugin.snapshot.msg;
+package plugin.snapshot;
 
-option java_package = "com.sandpolis.plugin.snapshot.msg";
+option java_package = "com.sandpolis.plugin.snapshot";
 
 // Create a new snapshot on a target agent.
 //
