@@ -11,7 +11,7 @@ package com.sandpolis.plugin.snapshot.server.vanilla.stream;
 
 import com.github.cilki.qcow4j.Qcow2;
 import com.sandpolis.core.net.stream.StreamSink;
-import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotDataBlock;
+import com.sandpolis.plugin.snapshot.Messages.EV_SnapshotDataBlock;
 
 public class ServerBlockStreamSink extends StreamSink<EV_SnapshotDataBlock> {
 

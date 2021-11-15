@@ -12,7 +12,7 @@ package com.sandpolis.plugin.snapshot.server.vanilla.stream;
 import java.util.concurrent.BlockingQueue;
 
 import com.sandpolis.core.net.stream.StreamSink;
-import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotHashBlock;
+import com.sandpolis.plugin.snapshot.Messages.EV_SnapshotHashBlock;
 
 public class ServerHashStreamSink extends StreamSink<EV_SnapshotHashBlock> {
 

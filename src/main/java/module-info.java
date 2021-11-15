@@ -8,7 +8,7 @@
 //                                                                            //
 //============================================================================//
 module com.sandpolis.plugin.snapshot {
-	exports com.sandpolis.plugin.snapshot.msg;
+	exports com.sandpolis.plugin.snapshot;
 
 	requires com.google.protobuf;
 	requires com.sandpolis.core.instance;

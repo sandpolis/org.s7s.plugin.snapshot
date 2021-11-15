@@ -17,7 +17,6 @@ option java_package = "com.sandpolis.plugin.snapshot";
 //
 // Sources      : client
 // Destinations : server
-// Response     : Outcome
 //
 message RQ_CreateSnapshot {
 
@@ -32,7 +31,6 @@ message RQ_CreateSnapshot {
 //
 // Sources      : client
 // Destinations : server
-// Response     : Outcome
 //
 message RQ_ApplySnapshot {
 
@@ -50,15 +48,19 @@ message RQ_ApplySnapshot {
 //
 // Sources      : server, agent
 // Destinations : server, agent
-// Response     : Outcome
 //
 message RQ_SnapshotStream {
+
+    enum SnapshotOperation {
+        SNAPSHOT_CREATE = 0;
+        SNAPSHOT_APPLY = 1;
+    }
 
     // The stream's ID
     int32 stream_id = 1;
 
     // The snapshot operation type
-    string operation = 2;
+    SnapshotOperation operation = 2;
 
     // The target partition uuid
     string partition_uuid = 3;
@@ -73,7 +75,11 @@ message RQ_SnapshotStream {
 // Destinations : server, agent
 //
 message EV_SnapshotDataBlock {
+
+    // The block's offset
     int64 offset = 1;
+
+    // The block's contents compressed with zlib
     bytes data = 2;
 }
 

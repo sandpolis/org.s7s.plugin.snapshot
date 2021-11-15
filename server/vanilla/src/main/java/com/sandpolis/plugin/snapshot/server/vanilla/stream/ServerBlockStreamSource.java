@@ -18,8 +18,8 @@ import com.github.cilki.qcow4j.Qcow2;
 import com.google.common.hash.Hashing;
 import com.google.protobuf.ByteString;
 import com.sandpolis.core.net.stream.StreamSource;
-import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotDataBlock;
-import com.sandpolis.plugin.snapshot.msg.MsgSnapshot.EV_SnapshotHashBlock;
+import com.sandpolis.plugin.snapshot.Messages.EV_SnapshotDataBlock;
+import com.sandpolis.plugin.snapshot.Messages.EV_SnapshotHashBlock;
 
 public class ServerBlockStreamSource extends StreamSource<EV_SnapshotDataBlock> {
 
