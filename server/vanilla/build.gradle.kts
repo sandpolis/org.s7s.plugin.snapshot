@@ -10,17 +10,7 @@
 
 plugins {
 	id("java-library")
-	id("sandpolis-java")
-	id("sandpolis-module")
-}
-
-repositories {
-	maven("https://maven.pkg.github.com/cilki/qcow4j") {
-		credentials {
-			username = System.getenv("GITHUB_ACTOR")
-			password = System.getenv("GITHUB_TOKEN")
-		}
-	}
+	id("com.sandpolis.build.module")
 }
 
 dependencies {
