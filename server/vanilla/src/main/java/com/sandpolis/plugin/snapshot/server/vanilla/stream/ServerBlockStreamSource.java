@@ -17,7 +17,7 @@ import java.util.concurrent.ExecutorService;
 import com.github.cilki.qcow4j.Qcow2;
 import com.google.common.hash.Hashing;
 import com.google.protobuf.ByteString;
-import com.sandpolis.core.net.stream.StreamSource;
+import com.sandpolis.core.instance.stream.StreamSource;
 import com.sandpolis.plugin.snapshot.Messages.EV_SnapshotDataBlock;
 import com.sandpolis.plugin.snapshot.Messages.EV_SnapshotHashBlock;
 

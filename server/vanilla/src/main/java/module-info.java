@@ -15,7 +15,6 @@ module com.sandpolis.plugin.snapshot.server.vanilla {
 	requires com.google.protobuf;
 	requires com.sandpolis.core.foundation;
 	requires com.sandpolis.core.instance;
-	requires com.sandpolis.core.net;
 	requires com.sandpolis.plugin.snapshot;
 	requires com.github.cilki.qcow4j;
 	requires org.slf4j;
