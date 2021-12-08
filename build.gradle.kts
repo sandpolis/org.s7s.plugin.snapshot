@@ -10,20 +10,20 @@
 
 plugins {
 	id("java-library")
-	id("com.sandpolis.build.module") version "+"
-	id("com.sandpolis.build.protobuf") version "+"
-	id("com.sandpolis.build.publish") version "+"
-	id("com.sandpolis.build.plugin") version "+"
-	id("com.sandpolis.build.codegen") version "+"
+	id("com.sandpolis.build.module")
+	id("com.sandpolis.build.protobuf")
+	id("com.sandpolis.build.publish")
+	id("com.sandpolis.build.plugin")
+	id("com.sandpolis.build.codegen")
 }
 
 dependencies {
-	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.2")
+	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.+")
 
 	if (project.getParent() == null) {
 		api("com.sandpolis:core.instance:+")
 	} else {
-		api(project(":module:com.sandpolis.core.instance"))
+		api(project(":core:com.sandpolis.core.instance"))
 	}
 }
 

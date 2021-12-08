@@ -9,7 +9,7 @@
 //============================================================================//
 package com.sandpolis.plugin.snapshot.server.vanilla.stream;
 
-import com.github.cilki.qcow4j.Qcow2;
+import com.sandpolis.core.integration.qcow2.Qcow2;
 import com.sandpolis.core.instance.stream.StreamSource;
 import com.sandpolis.plugin.snapshot.Messages.EV_SnapshotHashBlock;
 

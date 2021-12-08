@@ -14,7 +14,7 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 
-import com.github.cilki.qcow4j.Qcow2;
+import com.sandpolis.core.integration.qcow2.Qcow2;
 import com.google.common.hash.Hashing;
 import com.google.protobuf.ByteString;
 import com.sandpolis.core.instance.stream.StreamSource;

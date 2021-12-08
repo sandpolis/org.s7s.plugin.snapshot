@@ -16,7 +16,7 @@ module com.sandpolis.plugin.snapshot.server.vanilla {
 	requires com.sandpolis.core.foundation;
 	requires com.sandpolis.core.instance;
 	requires com.sandpolis.plugin.snapshot;
-	requires com.github.cilki.qcow4j;
+	requires com.sandpolis.core.integration.qcow2;
 	requires org.slf4j;
 
 	//provides com.sandpolis.core.instance.plugin.SandpolisPlugin with com.sandpolis.plugin.snapshot.server.vanilla.SnapshotPlugin;
