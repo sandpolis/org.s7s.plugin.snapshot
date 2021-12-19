@@ -1,16 +1,15 @@
 //============================================================================//
 //                                                                            //
-//                         Copyright © 2015 Sandpolis                         //
+//            Copyright © 2015 - 2022 Sandpolis Software Foundation           //
 //                                                                            //
 //  This source file is subject to the terms of the Mozilla Public License    //
-//  version 2. You may not use this file except in compliance with the MPL    //
-//  as published by the Mozilla Foundation.                                   //
+//  version 2. You may not use this file except in compliance with the MPLv2. //
 //                                                                            //
 //============================================================================//
 
 plugins {
 	id("java-library")
-	id("com.sandpolis.build.module")
+	id("org.s7s.build.module")
 }
 
 dependencies {
@@ -22,7 +21,7 @@ dependencies {
 
 eclipse {
 	project {
-		name = "com.sandpolis.plugin.snapshot:agent:kilo"
-		comment = "com.sandpolis.plugin.snapshot:agent:kilo"
+		name = "org.s7s.plugin.snapshot:agent:java"
+		comment = "org.s7s.plugin.snapshot:agent:java"
 	}
 }

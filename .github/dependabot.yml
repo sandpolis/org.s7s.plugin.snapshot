@@ -7,13 +7,13 @@ updates:
       timezone: America/Chicago
     open-pull-requests-limit: 99
   - package-ecosystem: gradle
-    directory: "/agent/vanilla"
+    directory: "/agent/java"
     schedule:
       interval: daily
       timezone: America/Chicago
     open-pull-requests-limit: 99
   - package-ecosystem: gradle
-    directory: "/server/vanilla"
+    directory: "/server/java"
     schedule:
       interval: daily
       timezone: America/Chicago

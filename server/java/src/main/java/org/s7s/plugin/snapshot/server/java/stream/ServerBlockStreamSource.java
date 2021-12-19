@@ -1,25 +1,24 @@
 //============================================================================//
 //                                                                            //
-//                         Copyright © 2015 Sandpolis                         //
+//            Copyright © 2015 - 2022 Sandpolis Software Foundation           //
 //                                                                            //
 //  This source file is subject to the terms of the Mozilla Public License    //
-//  version 2. You may not use this file except in compliance with the MPL    //
-//  as published by the Mozilla Foundation.                                   //
+//  version 2. You may not use this file except in compliance with the MPLv2. //
 //                                                                            //
 //============================================================================//
-package com.sandpolis.plugin.snapshot.server.vanilla.stream;
+package org.s7s.plugin.snapshot.server.java.stream;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 
-import com.sandpolis.core.integration.qcow2.Qcow2;
+import org.s7s.core.integration.qcow2.Qcow2;
 import com.google.common.hash.Hashing;
 import com.google.protobuf.ByteString;
-import com.sandpolis.core.instance.stream.StreamSource;
-import com.sandpolis.plugin.snapshot.Messages.EV_SnapshotDataBlock;
-import com.sandpolis.plugin.snapshot.Messages.EV_SnapshotHashBlock;
+import org.s7s.core.instance.stream.StreamSource;
+import org.s7s.plugin.snapshot.Messages.EV_SnapshotDataBlock;
+import org.s7s.plugin.snapshot.Messages.EV_SnapshotHashBlock;
 
 public class ServerBlockStreamSource extends StreamSource<EV_SnapshotDataBlock> {
 
