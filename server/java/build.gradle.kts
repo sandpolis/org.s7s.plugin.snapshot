@@ -19,9 +19,9 @@ dependencies {
 	compileOnly(project.getParent()?.getParent()!!)
 
 	if (project.getParent() == null) {
-		compileOnly("org.s7s.core.integration.qcow2:+")
+		implementation("org.s7s.core.ext.qemu:+")
 	} else {
-		compileOnly(project(":core:integration:org.s7s.core.integration.qcow2"))
+		implementation(project(":core:ext:qemu"))
 	}
 }
 
