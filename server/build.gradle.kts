@@ -16,7 +16,7 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 
-	compileOnly(project.getParent()?.getParent()!!)
+	compileOnly(project.getParent()!!)
 
 	if (project.getParent() == null) {
 		implementation("org.s7s.core.ext.qemu:+")
@@ -27,7 +27,7 @@ dependencies {
 
 eclipse {
 	project {
-		name = "org.s7s.plugin.snapshot:server:java"
-		comment = "org.s7s.plugin.snapshot:server:java"
+		name = "org.s7s.plugin.snapshot:server"
+		comment = "org.s7s.plugin.snapshot:server"
 	}
 }
